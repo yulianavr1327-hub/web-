@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f8f5ec">
+    <title>Comprar BioCabel</title>
+    <meta name="description" content="Completa tu pedido de champú prebiótico BioCabel por WhatsApp.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: light;
+            --compra-fondo: #f8f5ec;
+            --compra-rosa: #f5d9df;
+            --compra-verde: #365f41;
+            --compra-texto: #26342a;
+            --compra-suave: #6d786f;
+            --compra-borde: #dfe4d9;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            min-width: 320px;
+            margin: 0;
+            background: var(--compra-fondo);
+            color: var(--compra-texto);
+            font-family: "Poppins", sans-serif;
+        }
+
+        a { color: inherit; }
+
+        .compra-header {
+            min-height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px max(6vw, 20px);
+            background: #fce7f3;
+        }
+
+        .compra-logo img {
+            display: block;
+            width: 160px;
+            height: 80px;
+            object-fit: cover;
+        }
+
+        .compra-volver {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--compra-verde);
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .compra-layout {
+            min-height: calc(100vh - 130px);
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, .95fr);
+        }
+
+        .compra-formulario-panel {
+            padding: 44px clamp(24px, 5.8vw, 86px) 56px;
+            background: #fce7f3;
+            border-right: 1px solid #efc9dc;
+        }
+
+        .compra-formulario-contenido {
+            width: min(100%, 680px);
+            margin: 0 auto;
+        }
+
+        .compra-titulo-seccion {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin: 4px 0 16px;
+        }
+
+        .compra-titulo-seccion h1,
+        .compra-titulo-seccion h2 {
+            margin: 0;
+            color: #171717;
+            font-family: "Poppins", sans-serif;
+            font-size: 24px;
+            font-weight: 500;
+        }
+
+        .compra-iniciar-sesion {
+            color: #bd2878;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .compra-formulario {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .compra-campo { min-width: 0; }
+        .compra-campo--ancho { grid-column: 1 / -1; }
+
+        .compra-campo input,
+        .compra-campo select {
+            width: 100%;
+            height: 60px;
+            padding: 0 14px;
+            border: 1px solid #dedede;
+            border-radius: 16px;
+            background: #fff;
+            color: var(--compra-texto);
+            font: inherit;
+            font-size: 15px;
+        }
+
+        .compra-campo input::placeholder { color: #758198; opacity: 1; }
+
+        .compra-campo input:focus,
+        .compra-campo select:focus {
+            border-color: #cb6a9f;
+            outline: 2px solid rgb(203 106 159 / 16%);
+        }
+
+        .compra-opcion {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            margin: 0 0 26px;
+            color: #171717;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .compra-opcion input {
+            width: 22px;
+            height: 22px;
+            flex: 0 0 auto;
+            margin: 0;
+            accent-color: #bd2878;
+        }
+
+        .compra-opcion--final { margin: 4px 0 0; }
+
+        .compra-resumen {
+            padding: 50px clamp(24px, 5.5vw, 80px);
+            background: #f5f5f5;
+        }
+
+        .compra-resumen-contenido {
+            width: min(100%, 600px);
+            margin: 0 auto;
+        }
+
+        .compra-producto-resumen {
+            display: grid;
+            grid-template-columns: 82px minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 18px;
+            margin: 0 0 30px;
+        }
+
+        .compra-miniatura {
+            position: relative;
+            width: 82px;
+            height: 82px;
+            display: grid;
+            place-items: center;
+            border: 1px solid #e4e4e4;
+            border-radius: 20px;
+            background: #fff;
+        }
+
+        .compra-miniatura img {
+            width: 68px;
+            height: 68px;
+            object-fit: contain;
+        }
+
+        .compra-cantidad-burbuja {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 26px;
+            height: 26px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: #171717;
+            color: #fff;
+            font-size: 12px;
+        }
+
+        .compra-producto-nombre {
+            color: #252525;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .compra-producto-precio {
+            color: #252525;
+            font-size: 14px;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .compra-cantidad {
+            width: 68px;
+            height: 34px;
+            margin-top: 6px;
+            padding: 4px 8px;
+            border: 1px solid #d8d8d8;
+            border-radius: 7px;
+            background: #fff;
+            font: inherit;
+            font-size: 13px;
+        }
+
+        .compra-resumen-lineas {
+            display: grid;
+            gap: 10px;
+            margin-top: 32px;
+            padding-top: 22px;
+            border-top: 1px solid #dedede;
+        }
+
+        .compra-resumen-linea {
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .compra-resumen-linea--total {
+            margin-top: 10px;
+            color: #111;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .compra-resumen-ayuda {
+            margin: 22px 0 0;
+            color: #6d6d6d;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .compra-enviar {
+            grid-column: 1 / -1;
+            min-height: 52px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            margin-top: 8px;
+            border: 0;
+            border-radius: 12px;
+            background: var(--compra-verde);
+            color: white;
+            cursor: pointer;
+            font: inherit;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .compra-enviar:hover { background: #294c33; }
+
+        .compra-nota {
+            grid-column: 1 / -1;
+            margin: 0;
+            color: var(--compra-suave);
+            font-size: 11px;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        @media (max-width: 820px) {
+            .compra-header { min-height: 90px; }
+            .compra-layout { grid-template-columns: 1fr; }
+            .compra-formulario-panel { border-right: 0; }
+            .compra-resumen { grid-row: 2; }
+        }
+
+        @media (max-width: 480px) {
+            .compra-header { padding-inline: 16px; }
+            .compra-logo img {
+                width: 128px;
+                height: 64px;
+            }
+            .compra-formulario-panel,
+            .compra-resumen { padding: 30px 16px 38px; }
+            .compra-formulario { grid-template-columns: 1fr; }
+            .compra-campo--ancho,
+            .compra-opcion,
+            .compra-enviar,
+            .compra-nota { grid-column: auto; }
+            .compra-producto-resumen {
+                grid-template-columns: 68px minmax(0, 1fr) auto;
+                gap: 12px;
+            }
+            .compra-miniatura { width: 68px; height: 68px; }
+            .compra-miniatura img { width: 56px; height: 56px; }
+            .compra-producto-nombre,
+            .compra-producto-precio { font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="compra-header">
+        <a class="compra-logo" href="index.html" aria-label="BioCabel, volver al inicio">
+            <img src="assets/img/logo.png" alt="BioCabel">
+        </a>
+        <a class="compra-volver" href="index.html#c"><i class="bi bi-arrow-left" aria-hidden="true"></i> Volver al producto</a>
+    </header>
+
+    <main class="compra-layout">
+        <section class="compra-formulario-panel" aria-label="Datos de contacto y entrega">
+            <div class="compra-formulario-contenido">
+                <div class="compra-titulo-seccion">
+                    <h1>Contacto</h1>
+                </div>
+
+                <form class="compra-formulario" id="formulario-compra">
+                    <div class="compra-campo compra-campo--ancho">
+                        <input id="contacto" name="contacto" autocomplete="email" placeholder="Email o número de teléfono móvil" aria-label="Email o número de teléfono móvil" required>
+                    </div>
+                    <label class="compra-opcion">
+                        <input type="checkbox" name="ofertas">
+                        Enviarme novedades y ofertas por correo electrónico
+                    </label>
+
+                    <div class="compra-titulo-seccion compra-campo--ancho">
+                        <h2>Entrega</h2>
+                    </div>
+                    <div class="compra-campo compra-campo--ancho">
+                        <select id="pais" name="pais" aria-label="País o región">
+                            <option value="Colombia" selected>Colombia</option>
+                        </select>
+                    </div>
+                    <div class="compra-campo">
+                        <input id="nombre" name="nombre" autocomplete="given-name" placeholder="Nombre" aria-label="Nombre" required>
+                    </div>
+                    <div class="compra-campo">
+                        <input id="apellidos" name="apellidos" autocomplete="family-name" placeholder="Apellidos" aria-label="Apellidos" required>
+                    </div>
+                    <div class="compra-campo compra-campo--ancho">
+                        <input id="cedula" name="cedula" autocomplete="off" placeholder="Cédula" aria-label="Cédula">
+                    </div>
+                    <div class="compra-campo compra-campo--ancho">
+                        <input id="direccion" name="direccion" autocomplete="street-address" placeholder="Dirección" aria-label="Dirección" required>
+                    </div>
+                    <div class="compra-campo compra-campo--ancho">
+                        <input id="complemento" name="complemento" placeholder="Casa, apartamento, etc. (opcional)" aria-label="Complemento de dirección, opcional">
+                    </div>
+                    <div class="compra-campo compra-campo--ancho">
+                        <select id="departamento" name="departamento" autocomplete="address-level1" aria-label="Departamento de Colombia" required>
+                            <option value="" selected disabled>Departamento / Estado</option>
+                            <option>Amazonas</option>
+                            <option>Antioquia</option>
+                            <option>Arauca</option>
+                            <option>Atlántico</option>
+                            <option>Bogotá D.C.</option>
+                            <option>Bolívar</option>
+                            <option>Boyacá</option>
+                            <option>Caldas</option>
+                            <option>Caquetá</option>
+                            <option>Casanare</option>
+                            <option>Cauca</option>
+                            <option>Cesar</option>
+                            <option>Chocó</option>
+                            <option>Córdoba</option>
+                            <option>Cundinamarca</option>
+                            <option>Guainía</option>
+                            <option>Guaviare</option>
+                            <option>Huila</option>
+                            <option>La Guajira</option>
+                            <option>Magdalena</option>
+                            <option>Meta</option>
+                            <option>Nariño</option>
+                            <option>Norte de Santander</option>
+                            <option>Putumayo</option>
+                            <option>Quindío</option>
+                            <option>Risaralda</option>
+                            <option>San Andrés, Providencia y Santa Catalina</option>
+                            <option>Santander</option>
+                            <option>Sucre</option>
+                            <option>Tolima</option>
+                            <option>Valle del Cauca</option>
+                            <option>Vaupés</option>
+                            <option>Vichada</option>
+                        </select>
+                    </div>
+                    <div class="compra-campo">
+                        <select id="ciudad" name="ciudad" autocomplete="address-level2" aria-label="Ciudad de Colombia" required disabled>
+                            <option value="" selected>Primero elige un departamento</option>
+                        </select>
+                    </div>
+                    <div class="compra-campo compra-campo--ancho" id="ciudad-otro-contenedor" hidden>
+                        <input id="ciudad-otro" name="ciudad-otro" placeholder="Escribe tu ciudad o municipio" aria-label="Otra ciudad o municipio">
+                    </div>
+                    <div class="compra-campo">
+                        <input id="codigo-postal" name="codigo-postal" autocomplete="postal-code" placeholder="Código postal (opcional)" aria-label="Código postal, opcional">
+                    </div>
+                    <div class="compra-campo compra-campo--ancho">
+                        <input id="telefono" name="telefono" type="tel" autocomplete="tel" placeholder="Teléfono" aria-label="Teléfono" required>
+                    </div>
+                    <label class="compra-opcion compra-opcion--final">
+                        <input type="checkbox" name="guardar">
+                        Guardar mi información y consultar más rápidamente la próxima vez
+                    </label>
+                    <button class="compra-enviar" type="submit"><i class="bi bi-whatsapp" aria-hidden="true"></i> Continuar por WhatsApp</button>
+                    <p class="compra-nota">El envío es gratis. No se realizará ningún cobro en esta página; confirma tu pedido por WhatsApp.</p>
+                </form>
+            </div>
+        </section>
+
+        <aside class="compra-resumen" aria-label="Resumen del pedido">
+            <div class="compra-resumen-contenido">
+                <div class="compra-producto-resumen">
+                    <div class="compra-miniatura">
+                        <img src="assets/img/prototipo.jfif" alt="">
+                        <span class="compra-cantidad-burbuja" id="cantidad-resumen">1</span>
+                    </div>
+                    <div class="compra-producto-nombre">Champú prebiótico BioCabel<br>
+                        <input class="compra-cantidad" id="cantidad" name="cantidad" type="number" min="1" max="20" value="1" form="formulario-compra" aria-label="Cantidad">
+                    </div>
+                    <div class="compra-producto-precio">COP $35.000</div>
+                </div>
+
+                <div class="compra-resumen-lineas">
+                    <div class="compra-resumen-linea"><span>Subtotal</span><span id="subtotal-compra">COP $35.000</span></div>
+                    <div class="compra-resumen-linea"><span>Envío</span><span>Gratis</span></div>
+                    <div class="compra-resumen-linea compra-resumen-linea--total"><span>Total</span><span id="total-compra">COP $35.000</span></div>
+                </div>
+                <p class="compra-resumen-ayuda">Confirma tu pedido directamente por WhatsApp.</p>
+            </div>
+        </aside>
+    </main>
+
+    <script>
+        const ciudadesPorDepartamento = {
+            "Amazonas": ["Leticia"],
+            "Antioquia": ["Medellín", "Bello", "Envigado", "Itagüí", "Rionegro", "Apartadó"],
+            "Arauca": ["Arauca", "Saravena", "Tame"],
+            "Atlántico": ["Barranquilla", "Soledad", "Malambo", "Sabanalarga"],
+            "Bogotá D.C.": ["Bogotá"],
+            "Bolívar": ["Cartagena", "Magangué", "Turbaco", "Arjona"],
+            "Boyacá": ["Tunja", "Duitama", "Sogamoso", "Chiquinquirá", "Paipa"],
+            "Caldas": ["Manizales", "Chinchiná", "La Dorada", "Villamaría"],
+            "Caquetá": ["Florencia", "Puerto Rico", "San Vicente del Caguán"],
+            "Casanare": ["Yopal", "Aguazul", "Villanueva"],
+            "Cauca": ["Popayán", "Santander de Quilichao", "Puerto Tejada"],
+            "Cesar": ["Valledupar", "Aguachica", "Agustín Codazzi"],
+            "Chocó": ["Quibdó", "Istmina", "Tadó"],
+            "Córdoba": ["Montería", "Cereté", "Lorica", "Sahagún"],
+            "Cundinamarca": ["Soacha", "Zipaquirá", "Chía", "Facatativá", "Girardot", "Fusagasugá", "Mosquera", "Madrid"],
+            "Guainía": ["Inírida"],
+            "Guaviare": ["San José del Guaviare", "Calamar", "El Retorno"],
+            "Huila": ["Neiva", "Pitalito", "Garzón", "La Plata"],
+            "La Guajira": ["Riohacha", "Maicao", "Uribia", "Fonseca"],
+            "Magdalena": ["Santa Marta", "Ciénaga", "Fundación", "Plato"],
+            "Meta": ["Villavicencio", "Acacías", "Granada", "Puerto López"],
+            "Nariño": ["Pasto", "Ipiales", "Tumaco", "Túquerres"],
+            "Norte de Santander": ["Cúcuta", "Ocaña", "Pamplona", "Villa del Rosario"],
+            "Putumayo": ["Mocoa", "Puerto Asís", "Orito"],
+            "Quindío": ["Armenia", "Calarcá", "Montenegro", "Quimbaya"],
+            "Risaralda": ["Pereira", "Dosquebradas", "Santa Rosa de Cabal"],
+            "San Andrés, Providencia y Santa Catalina": ["San Andrés", "Providencia"],
+            "Santander": ["Bucaramanga", "Floridablanca", "Girón", "Piedecuesta", "Barrancabermeja", "San Gil"],
+            "Sucre": ["Sincelejo", "Corozal", "San Marcos", "Tolú"],
+            "Tolima": ["Ibagué", "El Espinal", "Honda", "Melgar"],
+            "Valle del Cauca": ["Cali", "Palmira", "Buenaventura", "Tuluá", "Buga", "Cartago", "Jamundí", "Yumbo"],
+            "Vaupés": ["Mitú", "Carurú"],
+            "Vichada": ["Puerto Carreño", "La Primavera", "Cumaribo"]
+        };
+
+        const departamento = document.getElementById("departamento");
+        const ciudad = document.getElementById("ciudad");
+        const ciudadOtroContenedor = document.getElementById("ciudad-otro-contenedor");
+        const ciudadOtro = document.getElementById("ciudad-otro");
+
+        departamento.addEventListener("change", function () {
+            ciudad.replaceChildren(new Option("Selecciona tu ciudad", ""));
+            ciudadesPorDepartamento[departamento.value].forEach(function (nombreCiudad) {
+                ciudad.add(new Option(nombreCiudad, nombreCiudad));
+            });
+            ciudad.add(new Option("Otra ciudad o municipio...", "__otro__"));
+            ciudad.disabled = false;
+            ciudadOtroContenedor.hidden = true;
+            ciudadOtro.required = false;
+            ciudadOtro.value = "";
+        });
+
+        ciudad.addEventListener("change", function () {
+            const requiereOtraCiudad = ciudad.value === "__otro__";
+            ciudadOtroContenedor.hidden = !requiereOtraCiudad;
+            ciudadOtro.required = requiereOtraCiudad;
+            if (requiereOtraCiudad) ciudadOtro.focus();
+        });
+
+        document.getElementById("formulario-compra").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const datos = new FormData(event.currentTarget);
+            const ciudadEntrega = datos.get("ciudad") === "__otro__"
+                ? datos.get("ciudad-otro")
+                : datos.get("ciudad");
+            const mensaje = [
+                "Hola BioCabel, quiero hacer un pedido:",
+                `Contacto: ${datos.get("contacto")}`,
+                `Nombre: ${datos.get("nombre")} ${datos.get("apellidos")}`,
+                `Cédula: ${datos.get("cedula") || "No indicada"}`,
+                `Dirección: ${datos.get("direccion")}`,
+                `Complemento: ${datos.get("complemento") || "No indicado"}`,
+                `WhatsApp: ${datos.get("telefono")}`,
+                `Ciudad: ${ciudadEntrega}, ${datos.get("departamento")}, Colombia`,
+                `Código postal: ${datos.get("codigo-postal") || "No indicado"}`,
+                `Cantidad: ${datos.get("cantidad")}`,
+                `Precio unitario: COP $35.000`,
+                `Subtotal: COP $${new Intl.NumberFormat("es-CO").format(35000 * Number(datos.get("cantidad")))}`,
+                `Envío: Gratis`,
+                `Total: COP $${new Intl.NumberFormat("es-CO").format(35000 * Number(datos.get("cantidad")))}`,
+                `Acepta recibir ofertas: ${datos.has("ofertas") ? "Sí" : "No"}`
+            ].join("\n");
+
+            window.location.href = `https://wa.me/573104816156?text=${encodeURIComponent(mensaje)}`;
+        });
+
+        const cantidad = document.getElementById("cantidad");
+        const cantidadResumen = document.getElementById("cantidad-resumen");
+        const subtotalCompra = document.getElementById("subtotal-compra");
+        const totalCompra = document.getElementById("total-compra");
+        const formatoPrecio = new Intl.NumberFormat("es-CO");
+        cantidad.addEventListener("input", function () {
+            const unidades = Math.max(1, Number(cantidad.value) || 1);
+            cantidadResumen.textContent = String(unidades);
+            subtotalCompra.textContent = `COP $${formatoPrecio.format(35000 * unidades)}`;
+            totalCompra.textContent = `COP $${formatoPrecio.format(35000 * unidades)}`;
+        });
+    </script>
+</body>
+</html>

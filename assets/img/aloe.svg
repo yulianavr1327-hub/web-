@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" width="300" height="400">
+  <!-- Fondo -->
+  <rect width="300" height="400" fill="#f5f5f5" rx="20"/>
+  
+  <!-- Maceta -->
+  <defs>
+    <linearGradient id="macetaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a574;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a0826d;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Maceta base -->
+  <path d="M 80 280 L 70 360 Q 70 375 85 375 L 215 375 Q 230 375 230 360 L 220 280 Z" 
+        fill="url(#macetaGrad)" stroke="#8b7355" stroke-width="2"/>
+  
+  <!-- Borde maceta -->
+  <ellipse cx="150" cy="280" rx="70" ry="15" fill="#b8956a" stroke="#8b7355" stroke-width="2"/>
+  
+  <!-- Tierra -->
+  <ellipse cx="150" cy="290" rx="60" ry="12" fill="#6b5d4f"/>
+  
+  <!-- Hojas del Aloe Vera -->
+  <g id="planta">
+    <!-- Hoja 1 (central, grande) -->
+    <path d="M 150 180 Q 160 120 165 60 Q 166 50 160 48 Q 150 45 148 55 Q 140 120 135 180" 
+          fill="#4a9b5c" stroke="#2d6b3a" stroke-width="1.5"/>
+    
+    <!-- Hoja 2 (derecha) -->
+    <path d="M 150 200 Q 175 150 200 100 Q 206 88 200 85 Q 190 82 180 105 Q 155 155 140 200" 
+          fill="#5bb86f" stroke="#2d6b3a" stroke-width="1.5"/>
+    
+    <!-- Hoja 3 (izquierda) -->
+    <path d="M 150 200 Q 125 150 100 100 Q 94 88 100 85 Q 110 82 120 105 Q 145 155 160 200" 
+          fill="#5bb86f" stroke="#2d6b3a" stroke-width="1.5"/>
+    
+    <!-- Hoja 4 (frente derecha) -->
+    <path d="M 155 220 Q 185 190 210 140 Q 218 125 210 122 Q 198 120 175 170 Q 160 205 152 235" 
+          fill="#6bc081" stroke="#2d6b3a" stroke-width="1.5"/>
+    
+    <!-- Hoja 5 (frente izquierda) -->
+    <path d="M 145 220 Q 115 190 90 140 Q 82 125 90 122 Q 102 120 125 170 Q 140 205 148 235" 
+          fill="#6bc081" stroke="#2d6b3a" stroke-width="1.5"/>
+    
+    <!-- Hoja 6 (trasera derecha) -->
+    <path d="M 160 240 Q 190 220 220 160 Q 228 142 220 140 Q 207 140 175 200 Q 165 230 158 255" 
+          fill="#5bb86f" stroke="#2d6b3a" stroke-width="1.5"/>
+    
+    <!-- Hoja 7 (trasera izquierda) -->
+    <path d="M 140 240 Q 110 220 80 160 Q 72 142 80 140 Q 93 140 125 200 Q 135 230 142 255" 
+          fill="#5bb86f" stroke="#2d6b3a" stroke-width="1.5"/>
+  </g>
+  
+  <!-- Detalles de textura en hojas -->
+  <path d="M 150 100 L 148 150 L 150 200" stroke="#2d6b3a" stroke-width="0.8" fill="none" opacity="0.4"/>
+  <path d="M 175 130 L 160 170 L 145 210" stroke="#2d6b3a" stroke-width="0.8" fill="none" opacity="0.4"/>
+  <path d="M 125 130 L 140 170 L 155 210" stroke="#2d6b3a" stroke-width="0.8" fill="none" opacity="0.4"/>
+  
+  <!-- Gotas de agua (rocío) -->
+  <circle cx="155" cy="70" r="3" fill="#87CEEB" opacity="0.6"/>
+  <circle cx="195" cy="110" r="2.5" fill="#87CEEB" opacity="0.5"/>
+  <circle cx="115" cy="115" r="2" fill="#87CEEB" opacity="0.5"/>
+</svg>
